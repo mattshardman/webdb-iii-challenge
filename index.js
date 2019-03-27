@@ -14,7 +14,19 @@ app.get('/api/cohorts', async (req, res) => {
         res.status(200);
         res.json(cohorts);
     } catch (e) {
-        res.status(400);
+        res.status(500);
+        res.json(e);
+    }
+});
+
+app.post('/api/cohorts', async (req, res) => {
+    const cohortToAdd = req.body;
+    try {
+        const cohort = await db.insert(cohortToAdd).into('cohorts');
+        res.status(201);
+        res.json(cohort);
+    } catch (e) {
+        res.status(500);
         res.json(e);
     }
 });
