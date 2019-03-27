@@ -31,4 +31,29 @@ app.post('/api/cohorts', async (req, res) => {
     }
 });
 
+app.get('/api/cohorts/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const cohorts = await db('cohorts').where({ id });
+        res.status(200);
+        res.json(cohorts);
+    } catch (e) {
+        res.status(500);
+        res.json(e);
+    }
+});
+
+app.put('/api/cohorts/:id', async (req, res) => {
+    const { id } = req.params;
+    const { body } = req;
+    try {
+        const cohorts = await db('cohorts').where({ id }).update(body);
+        res.status(200);
+        res.json(cohorts);
+    } catch (e) {
+        res.status(500);
+        res.json(e);
+    }
+});
+
 app.listen(3000, () => console.log('Listening'));
