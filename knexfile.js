@@ -1,6 +1,7 @@
 // Update with your config settings.
 
 module.exports = {
+
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
@@ -8,10 +9,10 @@ module.exports = {
       filename: './database/lambda.sqlite3'
     },
     migrations: {
-      directory: './migrations'
+      directory: './database/migrations',
     },
-    migrations: {
-      directory: './seeds'
+    seeds: {
+      directory: './database/seeds',
     }
   },
 
@@ -46,4 +47,5 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
+
 };

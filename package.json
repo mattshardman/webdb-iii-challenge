@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "cohorts-table": "knex migrate:make createCohortsTable",
+    "students-table": "knex migrate:make createStudentsTable",
     "seed-cohorts": "knex seed:make 01-cohorts",
     "seed-students": "knex seed:make 02-students",
     "run-seed-cohorts": "knex seed:run 01-cohorts",
