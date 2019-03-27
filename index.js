@@ -43,6 +43,19 @@ app.get('/api/cohorts/:id', async (req, res) => {
     }
 });
 
+app.get('/api/students-cohorts/:id', async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    try {
+        const cohorts = await db('students').where({ cohort_id: id });
+        res.status(200);
+        res.json(cohorts);
+    } catch (e) {
+        res.status(500);
+        res.json(e);
+    }
+});
+
 app.put('/api/cohorts/:id', async (req, res) => {
     const { id } = req.params;
     const { body } = req;
