@@ -56,4 +56,16 @@ app.put('/api/cohorts/:id', async (req, res) => {
     }
 });
 
+app.delete('/api/cohorts/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const cohorts = await db('cohorts').where({ id }).del();
+        res.status(200);
+        res.json(cohorts);
+    } catch (e) {
+        res.status(500);
+        res.json(e);
+    }
+});
+
 app.listen(3000, () => console.log('Listening'));
